@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: auth-core
+  threads:
+    virtual:
+      enabled: true   # E/S concurrente; el hash de contraseñas irá en un pool acotado aparte (RNF-013)
+
+server:
+  shutdown: graceful   # despliegues sin interrupción (RNF-025)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true   # liveness/readiness para el orquestador
